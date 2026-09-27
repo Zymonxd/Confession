@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confession 💌</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #ffd6e7, #f7b6d2);
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+    }
+
+    .card {
+        width: 330px;
+        height: 430px;
+        background: #fff;
+        border-radius: 25px;
+        box-shadow: 0 15px 40px rgba(0,0,0,.2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+        text-align: center;
+        position: relative;
+    }
+
+    .heart {
+        font-size: 75px;
+        animation: beat 1s infinite;
+        margin-bottom: 20px;
+    }
+
+    @keyframes beat {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.15); }
+    }
+
+    h1 {
+        color: #d6336c;
+        margin-bottom: 12px;
+    }
+
+    p {
+        color: #777;
+        margin-bottom: 30px;
+    }
+
+    button {
+        border: none;
+        background: #d6336c;
+        color: white;
+        padding: 15px 45px;
+        border-radius: 30px;
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: .2s;
+    }
+
+    button:hover {
+        transform: scale(1.08);
+        background: #b82b5b;
+    }
+
+    .message {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,.75);
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .message-box {
+        background: #fff;
+        color: #333;
+        padding: 35px;
+        border-radius: 20px;
+        max-width: 330px;
+    }
+
+    .message-box h2 {
+        color: #d6336c;
+        margin-bottom: 10px;
+    }
+
+    .close {
+        margin-top: 20px;
+        padding: 10px 25px;
+        font-size: 14px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <div class="heart">💌</div>
+
+    <h1>A Confession</h1>
+
+    <p>Someone left you a little something...</p>
+
+    <button onclick="openConfession()">OPEN</button>
+</div>
+
+<!-- Your music -->
+<audio id="music" src="song.mp3"></audio>
+
+<script>
+
+function openConfession() {
+
+    const music = document.getElementById("music");
+
+    // Make the music loud
+    music.volume = 1.0;
+
+    // Start music
+    music.currentTime = 0;
+    music.play();
+
+    // Optional visual effect
+    document.body.style.background =
+        "linear-gradient(135deg, #ff4d8d, #ff9ec5)";
+
+    // Make the card react
+    const card = document.querySelector(".card");
+
+    card.style.transform = "scale(1.05)";
+
+    setTimeout(() => {
+        card.style.transform = "scale(1)";
+    }, 300);
+}
+
+</script>
+
+</body>
+</html>
